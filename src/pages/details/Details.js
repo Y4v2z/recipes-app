@@ -15,9 +15,12 @@ const Details = () => {
   //     .then(data => setTarif(data))
   // }, [url])
 
-  const { data: tarif } = useFetch(url)
+  const { data: tarif, isLoading, error } = useFetch(url)
   return (
     <div className="row mt-3">
+      {isLoading && <div className="alert alert-warning">Yükleniyor...</div>}
+      {error && <div className="alert alert-danger">{error}</div>}
+
       {
         tarif && (
           <>
