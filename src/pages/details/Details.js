@@ -41,7 +41,7 @@ const Details = () => {
             <hr className='mt-2' />
             <div className="col-12 mt-3">
               <p>{tarif.hazirlanisi}</p>
-              <a href={tarif.url} className='btn btn-outline-primary' >Tarif Sitesi</a>
+              <a href={tarif.url} className='btn btn-outline-primary' target="_blank" >Tarif Sitesi</a>
             </div>
           </>
         )
