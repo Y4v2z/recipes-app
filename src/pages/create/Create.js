@@ -1,6 +1,7 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import "./Create.css";
 import useFetch from '../../hooks/useFetch';
+import { useNavigate } from 'react-router-dom';
 
 const Create = () => {
   const [baslik, setBaslik] = useState("");
@@ -11,8 +12,9 @@ const Create = () => {
   const [resim, setResim] = useState("");
   const [url, setUrl] = useState("");
   const malzemeInput = useRef(null);
+  const navigate = useNavigate()
 
-  const { postData } = useFetch("http://localhost:3000/tarifler", "POST")
+  const { postData, data } = useFetch("http://localhost:3000/tarifler", "POST")
 
 
   const handleAddMalzeme = (e) => {
@@ -29,7 +31,11 @@ const Create = () => {
     e.preventDefault();
     postData({ baslik, aciklama, malzemeler, hazirlanisi, resim, url })
   }
-
+  useEffect(() => {
+    if (data) {
+      navigate("/")
+    }
+  }, [data, navigate])
   return (
     <div className="card mt-3">
       <div className="card-body">
@@ -62,7 +68,7 @@ const Create = () => {
             <label htmlFor="url" className="form-label">Url</label>
             <input type="text" name="url" id="url" className='form-control' onChange={(e) => setUrl(e.target.value)} />
           </div>
-          <button type="submit" className='btn btn-primary'>Kaydet</button>
+          <button type="submit" className='btn btn-primary float-end'>Kaydet</button>
         </form>
       </div>
     </div>
