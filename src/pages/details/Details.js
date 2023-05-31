@@ -1,8 +1,8 @@
-// import React, { useEffect } from 'react'
 import "./Details.css";
 import { useParams } from 'react-router-dom';
-// import { useState } from 'react';
 import useFetch from '../../hooks/useFetch';
+import { useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
 const Details = () => {
   const { id } = useParams();
@@ -16,6 +16,7 @@ const Details = () => {
   // }, [url])
 
   const { data: tarif, isLoading, error } = useFetch(url)
+  const { color } = useContext(ThemeContext)
   return (
     <div className="row mt-3">
       {isLoading && <div className="alert alert-warning">Yükleniyor...</div>}
@@ -41,7 +42,7 @@ const Details = () => {
             <hr className='mt-2' />
             <div className="col-12 mt-3">
               <p>{tarif.hazirlanisi}</p>
-              <a href={tarif.url} className='btn btn-outline-primary' target="_blank" >Tarif Sitesi</a>
+              <a href={tarif.url} className={`btn btn-outline-${color}`} target="_blank" rel="noreferrer" >Tarif Sitesi</a>
             </div>
           </>
         )
