@@ -5,7 +5,6 @@ import Details from "./pages/details/Details";
 import Search from "./pages/search/Search";
 import MainLayout from './layout/MainLayout';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -16,15 +15,12 @@ const routes = createBrowserRouter([
       { path: "/create", element: <Create /> },
       { path: "/tarifler/:id", element: <Details /> },
       { path: "/search", element: <Search /> }
-
     ]
   }
 ]);
-
 function App() {
   return (
     <RouterProvider router={routes} />
   );
 }
-
 export default App;

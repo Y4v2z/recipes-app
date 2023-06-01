@@ -5,7 +5,6 @@ const useFetch = (url, method = "GET") => {
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)
     const [options, SetOptions] = useState(null)
-
     const postData = (data) => {
         SetOptions({
             method: "POST",
@@ -15,9 +14,7 @@ const useFetch = (url, method = "GET") => {
             body: JSON.stringify(data)
         })
     }
-
     useEffect(() => {
-
         const fetchData = async (options) => {
             setIsLoading(true)
             try {
@@ -47,13 +44,3 @@ const useFetch = (url, method = "GET") => {
     }
 }
 export default useFetch;
-
-// 1 Promise Yöntemi
-// setIsLoading(true)
-// fetch(url)
-//     .then(res => res.json())
-//     .then(data => {
-//         setData(data)
-//         setIsLoading(false)
-//     })
-//  2 async-await Yöntemi

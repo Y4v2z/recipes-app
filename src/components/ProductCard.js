@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { ThemeContext } from '../contexts/ThemeContext';
 const ProductCard = ({ tarif }) => {
-    const { color } = useContext(ThemeContext)
+    const { color, mode } = useContext(ThemeContext)
     return (
         <div className="col-3 mb-3">
-            <div className="card">
+            <div className={`card border-${mode === "dark" ? "light" : "dark"}`}>
                 <img src={`img/${tarif.resim}`} alt={tarif.baslik} />
                 <div className="card-body">
                     <h5 className="card-title">{tarif.baslik}</h5>
@@ -16,8 +16,6 @@ const ProductCard = ({ tarif }) => {
                 </div>
             </div>
         </div>
-
     )
 }
-
 export default ProductCard;
